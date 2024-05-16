@@ -1,0 +1,15 @@
+body {
+    background-color: rgb(20, 20, 20);
+}
+
+#app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 97vh;
+}
+
+canvas {
+    background-color: black;
+    padding: 0 10px;
+}
