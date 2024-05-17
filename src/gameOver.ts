@@ -1,4 +1,4 @@
-import { ctx, gameLoop, width, height, audioChoose, gameOverAudio, inWaitAudio } from "./index";
+import { ctx, gameLoop, width, height, audioChoose, gameOverAudio } from "./index";
 
 
 export let isGameOver = false;

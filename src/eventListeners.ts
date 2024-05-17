@@ -20,27 +20,17 @@ export const eventListener = () => {
 
             let keyPressed = key.key;
 
-            switch(keyPressed) {
-                case 'ArrowLeft':
-                    moveLogic(-1);
-                    break;
-                case 'ArrowRight':
-                    moveLogic(1);
-                    break;
-                case 'ArrowDown':
-                    moveLogic('downKeyDown');
-                    break;
-                case 'ArrowUp':
-                    moveLogic('up')
-                    break;
-            };
+            if (keyPressed === 'ArrowLeft' || keyPressed === 'a') return moveLogic(-1);
+            if (keyPressed === 'ArrowRight' || keyPressed === 'd') return moveLogic(1);
+            if (keyPressed === 'ArrowUp' || keyPressed === 'w') return moveLogic('up');
+            if (keyPressed === 'ArrowDown' || keyPressed === 's' || key.code === 'Space' ) return moveLogic('downKeyDown');
         };
     });
 
     window.addEventListener('keyup', (key) => {
         let keyPressed = key.key;
 
-        if (keyPressed === 'ArrowDown') {
+        if (keyPressed === 'ArrowDown' || keyPressed === 's' || key.code === 'Space' ) {
             moveLogic('upKeyDown');
         }
 

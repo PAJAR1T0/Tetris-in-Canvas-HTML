@@ -1,4 +1,4 @@
-import { cube, columns, cantRotateAudio } from "./index";
+import { cube, columns, cantRotateAudio, variantArray } from "./index";
 
 let radiansFactor = Math.PI / 2;
 export let radians = radiansFactor;
@@ -24,17 +24,27 @@ export const rotateLogic = (cubesArray: cube[]) => {
         xArray.push(valueX);
         yArray.push(valueY);
 
+        variantArray.forEach((variants) => {
+            variants.forEach((eachVariant) => {
+                isOutside = (valueX - 1 === eachVariant.x && valueY === eachVariant.y) ? true : 
+                            (valueX + 1 === eachVariant.x && valueY === eachVariant.y) ? true : isOutside;
+            })
+        })
+
         if (valueX < 0 || valueX > columns - 1) {
-            cantRotateAudio.play();
             isOutside = true;
-            radians += radiansFactor
+            
         }
     })
     
-    if (!isOutside) {
-        cubesArray.forEach((cube, index) => {
+    if (isOutside) {
+        cantRotateAudio.play();
+        return radians += radiansFactor;
+    };
+   
+    cubesArray.forEach((cube, index) => {
         cube.x = xArray[index]
         cube.y = yArray[index]
-        })
-    };
+    })
+
 }
