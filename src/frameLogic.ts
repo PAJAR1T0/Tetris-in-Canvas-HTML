@@ -1,10 +1,11 @@
-import { ctx, variantArray, width, height, interval, lineChecker, gameOverLogic, createVariant } from './index';
-
+import { ctx, variantArray, width, height, interval, lineChecker, gameOverLogic, createVariant, updatePoints, 
+         drawActualPoints, pointsPerIteration, pointsPerColition, newPieceAudio } from './index';
 
 export let frame = 0;
 
 export const frameLogic = () => {
     frame += 1;
+    
     ctx.clearRect(0,0,width, height);
 
     let variantToWork = variantArray.pop()!;
@@ -17,9 +18,8 @@ export const frameLogic = () => {
         }
     });
 
-    
-
     if (!isColitioned && frame % interval === 0) {
+        updatePoints(pointsPerIteration)
         variantToWork.forEach((variant)=>{
             variant.gravity();
         });
@@ -49,6 +49,8 @@ export const frameLogic = () => {
         })
     })
 
+    drawActualPoints();
+
     if (isColitioned) {
         let isInTop = false
         variantToWork.forEach((element) => {
@@ -57,5 +59,9 @@ export const frameLogic = () => {
         if (isInTop) gameOverLogic();
     }
 
-    if (isColitioned) createVariant();
+    if (isColitioned) {
+        updatePoints(pointsPerColition)
+        createVariant();
+        newPieceAudio.play()
+    }
 }

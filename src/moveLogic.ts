@@ -1,7 +1,16 @@
-import { rotateLogic, variantArray, columns } from "./index";
+import { rotateLogic, variantArray, columns, points, nextLevelAudio } from "./index";
 
 let radiansFactor = Math.PI / 2;
 export let radians = radiansFactor;
+
+const maxInterval: number = 40;
+const minInterval: number  = 10;
+const numberOfLevels: number = 20;
+const maxLevelPointage: number = 2000;
+const pointsToNextLevel: number = maxLevelPointage / numberOfLevels;
+const decreaseIntervalfactor: number = maxInterval / numberOfLevels;
+let lastInterval: number = maxInterval;
+export let level: number = 0;
 
 export let interval: number = 40;
 
@@ -14,6 +23,16 @@ export const resetRadians = () => {
 }
 
 export const moveLogic = (value: number | string) => {
+    level = Math.floor(points/pointsToNextLevel)
+    interval = (Math.floor(points) < maxLevelPointage ) ? maxInterval - Math.round(decreaseIntervalfactor * level)
+    : minInterval;
+
+    if (interval !== lastInterval) {
+        nextLevelAudio.play();
+        lastInterval = interval;
+    }
+
+
     if (typeof value === 'number') {
         let variant = variantArray.pop()!;
         let isInCorner = false;
@@ -42,11 +61,7 @@ export const moveLogic = (value: number | string) => {
     }
     
     if (value === 'downKeyDown') {
-        interval = 10;
-    }
-
-    if (value === 'upKeyDown') {
-        interval = 40;
+        interval = minInterval;
     }
     
     if (value === 'up'){
@@ -55,4 +70,6 @@ export const moveLogic = (value: number | string) => {
         rotateLogic(variant, radians)
         variantArray.push(variant);
     }
+
+
 }

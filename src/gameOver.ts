@@ -1,4 +1,4 @@
-import { ctx, gameLoop, width, height } from "./index";
+import { ctx, gameLoop, width, height, mainAudio, gameOverAudio } from "./index";
 
 
 export let isGameOver = false;
@@ -10,7 +10,9 @@ export const resetGameOver = () => {
 export const gameOverLogic = () => {
     clearInterval(gameLoop)
     isGameOver = true;
-    
+    mainAudio.pause();
+    gameOverAudio.play()
+    mainAudio.currentTime = 0;
     ctx.save()
     ctx.beginPath()
     ctx.font = '40px Arial'

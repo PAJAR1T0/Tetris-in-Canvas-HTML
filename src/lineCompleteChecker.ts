@@ -1,4 +1,4 @@
-import { variantArray, columns, rows } from "./index";
+import { variantArray, columns, rows, updatePoints, pointsPerLine, clearLineAudio } from "./index";
 
 export const lineChecker = () => {
     let yArray: number[] = [];
@@ -10,6 +10,7 @@ export const lineChecker = () => {
         })
         
         if (yArray.length === columns) {
+            updatePoints(pointsPerLine);
 
             yArray = yArray.filter((value, index, array) => {
                 return array.indexOf(value) === index;
@@ -21,6 +22,8 @@ export const lineChecker = () => {
                 let removeValue = yArray[i] - i;
                 variantArray.splice(removeValue, 1);
             }
+
+            clearLineAudio.play();
         }
 
         yArray = []

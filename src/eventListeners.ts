@@ -1,4 +1,4 @@
-import { isGameOver, moveLogic, main, resetGameOver, resetInterval, resetVariantArray } from "./index";
+import { isGameOver, moveLogic, main, resetGameOver, resetInterval, resetVariantArray, resetPoints } from "./index";
 
 
 let isKeyDown: boolean = false;
@@ -13,6 +13,7 @@ export const eventListener = () => {
                 resetGameOver();
                 resetInterval();
                 resetVariantArray()
+                resetPoints()
                 main()
                 
             }

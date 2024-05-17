@@ -1,4 +1,4 @@
-import { cube, columns,  } from "./index";
+import { cube, columns, cantRotateAudio } from "./index";
 
 
 export const rotateLogic = (cubesArray: cube[], radians: number) => {
@@ -17,9 +17,8 @@ export const rotateLogic = (cubesArray: cube[], radians: number) => {
         xArray.push(valueX);
         yArray.push(valueY);
 
-        console.log(valueX, columns)
-
         if (valueX < 0 || valueX > columns - 1) {
+            cantRotateAudio.play();
             isOutside = true;
         }
     })
