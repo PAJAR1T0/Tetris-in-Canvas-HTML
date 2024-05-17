@@ -1,9 +1,12 @@
 import { ctx, variantArray, width, height, interval, lineChecker, gameOverLogic, createVariant, updatePoints, 
-         drawActualPoints, pointsPerIteration, pointsPerColition, newPieceAudio } from './index';
+         drawActualPoints, pointsPerIteration, pointsPerColition, newPieceAudio, 
+         inWaitAudio} from './index';
 
 export let frame = 0;
 
 export const frameLogic = () => {
+    inWaitAudio.pause()
+    inWaitAudio.currentTime = 0;
     frame += 1;
     
     ctx.clearRect(0,0,width, height);

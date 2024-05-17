@@ -1,7 +1,6 @@
 import { rotateLogic, variantArray, columns, points, nextLevelAudio } from "./index";
 
-let radiansFactor = Math.PI / 2;
-export let radians = radiansFactor;
+
 
 const maxInterval: number = 40;
 const minInterval: number  = 10;
@@ -18,9 +17,7 @@ export const resetInterval = () => {
     return interval = 40;
 }
 
-export const resetRadians = () => {
-    return radians = 0;
-}
+
 
 export const moveLogic = (value: number | string) => {
     level = Math.floor(points/pointsToNextLevel)
@@ -65,9 +62,8 @@ export const moveLogic = (value: number | string) => {
     }
     
     if (value === 'up'){
-        radians -= radiansFactor;
         let variant = variantArray.pop()!;
-        rotateLogic(variant, radians)
+        rotateLogic(variant)
         variantArray.push(variant);
     }
 

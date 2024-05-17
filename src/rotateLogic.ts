@@ -1,7 +1,14 @@
 import { cube, columns, cantRotateAudio } from "./index";
 
+let radiansFactor = Math.PI / 2;
+export let radians = radiansFactor;
 
-export const rotateLogic = (cubesArray: cube[], radians: number) => {
+export const resetRadians = () => {
+    return radians = 0;
+}
+
+export const rotateLogic = (cubesArray: cube[]) => {
+    radians -= radiansFactor;
     let firstCube = cubesArray[1];
     let xArray: number[] = []
     let yArray: number[] = []
@@ -20,6 +27,7 @@ export const rotateLogic = (cubesArray: cube[], radians: number) => {
         if (valueX < 0 || valueX > columns - 1) {
             cantRotateAudio.play();
             isOutside = true;
+            radians += radiansFactor
         }
     })
     

@@ -1,10 +1,17 @@
 export let cantRotateAudio: HTMLAudioElement;
 export let clearLineAudio: HTMLAudioElement;
 export let gameOverAudio: HTMLAudioElement;
-export let mainAudio: HTMLAudioElement;
 export let newPieceAudio: HTMLAudioElement;
 export let newRecordAudio: HTMLAudioElement;
 export let nextLevelAudio: HTMLAudioElement;
+export let inWaitAudio: HTMLAudioElement;
+
+let mainAudio1: HTMLAudioElement;
+let mainAudio2: HTMLAudioElement;
+let mainAudio3: HTMLAudioElement;
+let mainAudio4: HTMLAudioElement;
+
+export let mainAudiosArray: HTMLAudioElement[];
 
 
 const loadCantRotateAudio = () => {
@@ -24,19 +31,47 @@ const loadClearLineAudio = () => {
 const loadGameOverAudio = () => {
     return new Promise((resolve) => {
         gameOverAudio = new Audio('../assets/sounds/gameOver.mp3');
-        gameOverAudio.volume = 0.5;
         gameOverAudio.addEventListener('canplaythrough', () => resolve(true));
     })
 }
 
-const loadMainAudio = () => {
+const loadMainAudio1 = () => {
     return new Promise((resolve) => {
-        mainAudio = new Audio('../assets/sounds/mainAudio.mp3');
-        mainAudio.volume = 0.5;
-        mainAudio.addEventListener('canplaythrough', () => resolve(true));
+        mainAudio1 = new Audio('../assets/sounds/mainSounds/mainAudio1.mp3');
+        mainAudio1.addEventListener('canplaythrough', () => resolve(true));
     })
 }
 
+const loadMainAudio2 = () => {
+    return new Promise((resolve) => {
+        mainAudio2 = new Audio('../assets/sounds/mainSounds/mainAudio2.mp3');
+        mainAudio2.addEventListener('canplaythrough', () => resolve(true));
+    })
+}
+
+const loadMainAudio3 = () => {
+    return new Promise((resolve) => {
+        mainAudio3 = new Audio('../assets/sounds/mainSounds/mainAudio3.mp3');
+        mainAudio3.addEventListener('canplaythrough', () => resolve(true));
+    })
+}
+
+const loadMainAudio4 = () => {
+    return new Promise((resolve) => {
+        mainAudio4 = new Audio('../assets/sounds/mainSounds/mainAudio4.mp3');
+        mainAudio4.addEventListener('canplaythrough', () => resolve(true));
+    })
+}
+
+const loadMainAudios = async() => {
+    await loadMainAudio1();
+    await loadMainAudio2();
+    await loadMainAudio3();
+    await loadMainAudio4();
+
+    mainAudiosArray = [mainAudio1, mainAudio2, mainAudio3, mainAudio4];
+}
+ 
 const loadNewPieceAudio = () => {
     return new Promise((resolve) => {
         newPieceAudio = new Audio('../assets/sounds/newPiece.mp3');
@@ -59,14 +94,29 @@ const loadNextLevelAudio = () => {
     })
 }
 
+const loadInWaitAudio = () => {
+    return new Promise((resolve) => {
+        inWaitAudio = new Audio('../assets/sounds/inWait.mp3');
+        inWaitAudio.volume = 0.25;
+        inWaitAudio.addEventListener('canplaythrough', () => resolve(true));
+    })
+}
+
+const gameOverAudioEventListener = () => {
+    return gameOverAudio.addEventListener('ended', () => {
+        inWaitAudio.play();
+    })
+}
 
 export const loadAudios = async() => {
     await loadCantRotateAudio();
     await loadClearLineAudio();
     await loadGameOverAudio();
-    await loadMainAudio();
+    await loadMainAudios();
     await loadNewPieceAudio();
     await loadNewRecordAudio();
     await loadNextLevelAudio();
+    await loadInWaitAudio();
+    gameOverAudioEventListener();
     return;
 }
