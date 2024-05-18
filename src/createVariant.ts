@@ -1,8 +1,8 @@
 import { cube, resetRadians } from "./index";
 
-export let variantArray: cube[][] = [];
-
 const colors: string[] = ['#00e4ff', '#ff8d01', '#ff8d01', '#faff00', '#9e0196', '#f60001', '#68b624'];
+
+export let variantArray: cube[][] = [];
 
 export const resetVariantArray = () => {
     return variantArray = [];
@@ -15,8 +15,6 @@ export const createVariant = () => {
     let newCubeArray: cube[] = [];
 
     switch(variantChoose) {
-        
-
         case 0: {
             let x = Math.round(Math.random() * 6);
             let y = 0;

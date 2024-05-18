@@ -1,7 +1,5 @@
 import { rotateLogic, variantArray, columns, points, nextLevelAudio } from "./index";
 
-
-
 const maxInterval: number = 40;
 const minInterval: number  = 10;
 const numberOfLevels: number = 20;
@@ -9,15 +7,12 @@ const maxLevelPointage: number = 2000;
 const pointsToNextLevel: number = maxLevelPointage / numberOfLevels;
 const decreaseIntervalfactor: number = maxInterval / numberOfLevels;
 let lastInterval: number = maxInterval;
+
 export let level: number = 0;
 
 export let interval: number = 40;
 
-export const resetInterval = () => {
-    return interval = 40;
-}
-
-
+export const resetInterval = () => interval = 40;
 
 export const moveLogic = (value: number | string) => {
     level = Math.floor(points/pointsToNextLevel)
@@ -28,7 +23,6 @@ export const moveLogic = (value: number | string) => {
         nextLevelAudio.play();
         lastInterval = interval;
     }
-
 
     if (typeof value === 'number') {
         let variant = variantArray.pop()!;
@@ -51,8 +45,7 @@ export const moveLogic = (value: number | string) => {
             })
         }
 
-        variantArray.push(variant);
-        return;
+        return variantArray.push(variant);
     }
     
     if (value === 'downKeyDown') {
@@ -64,6 +57,4 @@ export const moveLogic = (value: number | string) => {
         rotateLogic(variant)
         variantArray.push(variant);
     }
-
-
 }

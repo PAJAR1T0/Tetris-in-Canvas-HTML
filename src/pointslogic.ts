@@ -39,13 +39,14 @@ export const updatePoints = (pointsFactor: number) => {
     points += pointsFactor;
     actualPointsToDraw = pointsToString(points);
     if (points > historicalPoints) {
-        if (!hasNewRecord) newRecordAudio.play();
-        hasNewRecord = true;
+        if (!hasNewRecord) {
+            newRecordAudio.play();
+            hasNewRecord = true;
+        }
         historicalPoints = points;
         historicalPointsToDraw = pointsToString(historicalPoints)
         saveHistoricalPoints()
     };
-    
 }
 
 export const drawActualPoints = () => {

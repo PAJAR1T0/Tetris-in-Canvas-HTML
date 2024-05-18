@@ -5,8 +5,11 @@ import { ctx, variantArray, width, height, interval, lineChecker, gameOverLogic,
 export let frame = 0;
 
 export const frameLogic = () => {
-    inWaitAudio.pause()
-    inWaitAudio.currentTime = 0;
+    if (!inWaitAudio.paused) {
+        inWaitAudio.pause()
+        inWaitAudio.currentTime = 0;
+    } 
+    
     frame += 1;
     
     ctx.clearRect(0,0,width, height);
@@ -55,14 +58,10 @@ export const frameLogic = () => {
     drawActualPoints();
 
     if (isColitioned) {
-        let isInTop = false
         variantToWork.forEach((element) => {
-            if (element.y === 0) isInTop = true;
+            if (element.y === 0) return gameOverLogic();
+            
         })
-        if (isInTop) gameOverLogic();
-    }
-
-    if (isColitioned) {
         updatePoints(pointsPerColition)
         createVariant();
         newPieceAudio.play()

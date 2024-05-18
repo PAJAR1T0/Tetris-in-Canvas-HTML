@@ -1,12 +1,10 @@
 import { ctx, gameLoop, width, height, audioChoose, gameOverAudio } from "./index";
 
-
 export let isGameOver = false;
 
 export const resetGameOver = () => {
     return isGameOver = false;
 }
-
 
 export const gameOverLogic = () => {
     clearInterval(gameLoop)

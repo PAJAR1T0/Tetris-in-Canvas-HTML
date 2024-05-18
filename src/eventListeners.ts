@@ -1,7 +1,11 @@
 import { isGameOver, moveLogic, main, resetGameOver, resetInterval, resetVariantArray, resetPoints } from "./index";
 
-
 let isKeyDown: boolean = false;
+let up: string[] = ['ArrowUp', 'w']
+let down: string[] = ['ArrowDown', 's', 'Space']
+let left: string[] = ['ArrowLeft', 'a']
+let right: string[] = ['ArrowRight', 'd']
+
 
 export const eventListener = () => {
     window.addEventListener('keydown', (key) => {
@@ -15,22 +19,22 @@ export const eventListener = () => {
                 resetVariantArray()
                 resetPoints()
                 main()
-                
+                return;
             }
 
             let keyPressed = key.key;
 
-            if (keyPressed === 'ArrowLeft' || keyPressed === 'a') return moveLogic(-1);
-            if (keyPressed === 'ArrowRight' || keyPressed === 'd') return moveLogic(1);
-            if (keyPressed === 'ArrowUp' || keyPressed === 'w') return moveLogic('up');
-            if (keyPressed === 'ArrowDown' || keyPressed === 's' || key.code === 'Space' ) return moveLogic('downKeyDown');
+            (up.find((value) => value === keyPressed)) ? moveLogic('up') : 
+            (down.find((value) => value === keyPressed)) ? moveLogic('downKeyDown') : 
+            (left.find((value) => value === keyPressed)) ? moveLogic(-1) : 
+            (right.find((value) => value === keyPressed)) ? moveLogic(1) : false;
         };
     });
 
     window.addEventListener('keyup', (key) => {
         let keyPressed = key.key;
 
-        if (keyPressed === 'ArrowDown' || keyPressed === 's' || key.code === 'Space' ) {
+        if (down.find((value) => value === keyPressed)) {
             moveLogic('upKeyDown');
         }
 

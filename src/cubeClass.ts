@@ -1,12 +1,12 @@
 import { ctx, variantArray, rows, boxMeasure } from "./index";
 
 export class cube {
-    initialX: number;
-    initialY: number;
+    xWithoutRotation: number;
+    yWithoutRotation: number;
 
     constructor(public x: number, public y: number, private color: string){
-        this.initialX = x;
-        this.initialY = y;
+        this.xWithoutRotation = x;
+        this.yWithoutRotation = y;
     }
 
     draw(){
@@ -22,13 +22,13 @@ export class cube {
 
     move(number: number){
         this.x += number;
-        this.initialX += number;
+        this.xWithoutRotation += number;
 
     }
 
     gravity(){
         this.y += 1;
-        this.initialY += 1;
+        this.yWithoutRotation += 1;
     }
 
     colitionChecker(index: number = 9999){

@@ -15,8 +15,8 @@ export const rotateLogic = (cubesArray: cube[]) => {
     let isOutside: boolean = false;
 
     cubesArray.forEach((cube) => {
-        let distanceX = cube.initialX - firstCube.x;
-        let distanceY = cube.initialY - firstCube.y;
+        let distanceX = cube.xWithoutRotation - firstCube.x;
+        let distanceY = cube.yWithoutRotation - firstCube.y;
 
         let valueX = firstCube.x + Math.round(distanceX * Math.cos(radians) - distanceY * Math.sin(radians));
         let valueY = firstCube.y + Math.round(distanceX * Math.sin(radians) + distanceY * Math.cos(radians));

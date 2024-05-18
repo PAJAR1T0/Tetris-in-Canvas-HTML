@@ -10,10 +10,6 @@ export const createCanvas = () => {
     const canvas: HTMLCanvasElement = document.createElement('canvas');
     const ctx: CanvasRenderingContext2D = canvas.getContext('2d')!;
 
-
-   
-
-
     canvas.width = width;
     canvas.height = height;
 
