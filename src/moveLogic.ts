@@ -36,9 +36,6 @@ export const moveLogic = (value: number | string) => {
 
         variant.forEach((element) => {
             if (element.x - 1 < 0 && value < 0 || element.x + 1 === columns && value > 0) isInCorner = true;
-            
-            // TODO CHECAR LA MANERA DE REVISAR EL ARRAY A LA HORA DE ROTAR
-
 
             variantArray.forEach((variants) => {
                 variants.forEach((eachVariant) => {
