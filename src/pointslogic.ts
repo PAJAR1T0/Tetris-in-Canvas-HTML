@@ -52,7 +52,6 @@ export const drawActualPoints = () => {
     ctx.save();
     ctx.beginPath();
     ctx.font = '15px "Press Start 2P"';
-    ctx.fillStyle = 'white';
     ctx.fillText(historicalPointsToDraw, width * .02, height * .05);
     ctx.fillText(actualPointsToDraw,width * .77, height * .05);
     ctx.fill();

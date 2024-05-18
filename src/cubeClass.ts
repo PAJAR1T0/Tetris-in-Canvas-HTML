@@ -13,6 +13,7 @@ export class cube {
         ctx.save();
         ctx.beginPath();
         ctx.fillStyle = this.color;
+        ctx.strokeStyle = 'gray'
         ctx.rect(this.x * boxMeasure, this.y * boxMeasure, boxMeasure, boxMeasure);
         ctx.fill();
         ctx.stroke();
