@@ -1,5 +1,5 @@
 export { loadAudios, cantRotateAudio, clearLineAudio, gameOverAudio, mainAudiosArray, newPieceAudio, newRecordAudio, nextLevelAudio, inWaitAudio } from './soundLogic';
-export { main, ctx, gameLoop, audioChoose } from './main';
+export { main, loadGame, ctx, gameLoop, audioChoose } from './loadGame';
 export { createCanvas, rows, columns, width, height, boxMeasure } from './createCanvas';
 export { eventListener } from './eventListeners';
 export { gameOverLogic, resetGameOver, isGameOver } from './gameOver';

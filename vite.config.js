@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    base: '/Tetris-in-Canvas-HTML'
+    base: '/Tetris-in-Canvas-HTML/'
 });

@@ -1,3 +1,16 @@
+import '../assets/sounds/cantRotate.mp3';
+import '../assets/sounds/clearLine.mp3';
+import '../assets/sounds/gameOver.mp3';
+import '../assets/sounds/inWait.mp3';
+import '../assets/sounds/newPiece.mp3';
+import '../assets/sounds/newRecord.mp3';
+import '../assets/sounds/nextLevel.mp3';
+import '../assets/sounds/mainSounds/mainAudio1.mp3';
+import '../assets/sounds/mainSounds/mainAudio2.mp3';
+import '../assets/sounds/mainSounds/mainAudio3.mp3';
+import '../assets/sounds/mainSounds/mainAudio4.mp3';
+
+
 export let cantRotateAudio: HTMLAudioElement;
 export let clearLineAudio: HTMLAudioElement;
 export let gameOverAudio: HTMLAudioElement;
