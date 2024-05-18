@@ -1,5 +1,5 @@
 import '../assets/style.css'
-import '../assets/backgroundImage.png'
+import background from '../assets/backgroundImage.png';
 import { createCanvas, isGameOver, createVariant, eventListener, frameLogic, loadHistoricalpoints, loadAudios, mainAudiosArray } from './index';
 
 export let gameLoop: number;
@@ -32,7 +32,7 @@ const addListener = () => window.addEventListener('keydown', () => {
 
 const loadBackgroundImage = async() => {
     let newImage = new Image();
-    newImage.src = '../assets/backgroundImage.png';
+    newImage.src = background;
     await newImage.decode();
 
     app.style.backgroundImage = `url(${newImage.src})`;
